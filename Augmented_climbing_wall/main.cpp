@@ -31,7 +31,7 @@ int main()
 		case(myServer::PLAY):
 			MainWindow::getWindow().setMouseCursorVisible(true);
 			//switch (server->getData()[game])
-			switch (3)
+			switch (4)
 			{
 			case(myServer::SMASH_IT):
 			{
@@ -71,6 +71,7 @@ int main()
 				std::cout << "TERRITORY started \n";
 
 				Territory::Starter territory;
+				territory.start(*server);
 				break;
 			}
 			default:

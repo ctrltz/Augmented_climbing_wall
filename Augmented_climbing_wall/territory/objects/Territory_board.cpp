@@ -12,7 +12,7 @@ Scoreboard::Scoreboard(Player & left, Player & right, float gameDuration)
     : left_ (left), right_ (right), gameDuration_ (gameDuration)
 {
     remainingTime_ = gameDuration_ * 60.f;
-    font_.loadFromFile("DIN.ttf");
+    font_.loadFromFile("territory/media/fonts/DIN.ttf");
 
     float x = 120.f, y = 60.f;
     sf::Color red = sf::Color(204, 0, 0);

@@ -24,7 +24,7 @@ namespace Territory
 		float update_time;
 		BodyTracker& kinect;
 		bool score_changed, paused, kinectControl, use_paddle_velocity;
-		sf::RenderWindow mWindow;
+		sf::RenderWindow& mWindow;
 		sf::Sprite bodySprite;
 		sf::Texture bodyTexture;
 		sf::Image bodyImage;

@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Territory_world.hpp"
+#include "../../mainWindow.h"
 #include "../../util.hpp"
 
 using namespace std;
@@ -18,7 +19,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     , paused(false)
     , kinectControl (kinectControl)
     , use_paddle_velocity(false)
-    , mWindow(sf::VideoMode(width, height), "Aerohockey", sf::Style::None)
+    , mWindow(MainWindow::getWindow())
     , left (height / 20, Config::red, update_time, kinect, true, kinectControl)
     , right (height / 20, Config::green, update_time, kinect, false, kinectControl)
     , board (left, right, 0.5)
@@ -41,7 +42,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     left_border.setSize(sf::Vector2f(800.f, 2.f));
     left_border.setFillColor(sf::Color::White);
 
-	if (!bodyTexture.loadFromFile("media/textures/tiles.jpg", sf::IntRect(0, 0, 97, 97)))
+	if (!bodyTexture.loadFromFile("territory/media/textures/tile.jpg", sf::IntRect(0, 0, 97, 97)))
 	{
 		std::cout << "Failed to create body texture\n";
 	}
