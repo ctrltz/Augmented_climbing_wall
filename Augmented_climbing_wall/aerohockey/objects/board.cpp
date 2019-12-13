@@ -11,7 +11,7 @@ Scoreboard::Scoreboard(Player * left, Player * right, float gameDuration)
     : left_ (left), right_ (right), gameDuration_ (gameDuration)
 {
     remainingTime_ = gameDuration_;
-    std::string path = getcwd_string() + Config::font_scoreboard_path;
+    std::string path = Config::font_scoreboard_path;
     if (!font_.loadFromFile(path))
     {
         std::cout << "Failed to load font for scoreboard: " << path << "\n";

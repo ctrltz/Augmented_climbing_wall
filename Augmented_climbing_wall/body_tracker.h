@@ -3,13 +3,7 @@
 #include <SFML/System.hpp>
 #include <vector>
 #include <unordered_map>
-#include <windows.h>
-
-// Kinect Header files
-#include <Kinect.h>
-
-//#include "../../easylogging/easylogging++.h"
-#include "util.hpp"
+#include "stdafx.h"
 
 namespace Joints
 {

@@ -156,9 +156,6 @@
     <ClCompile Include="Labyrinth\Labyrinth_config.cpp">
       <Filter>Исходные файлы\Labyrinth</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\starter.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="aerohockey\config\config.cpp">
       <Filter>Исходные файлы\Aerohockey\config</Filter>
     </ClCompile>
@@ -193,6 +190,9 @@
       <Filter>Исходные файлы\Aerohockey\states</Filter>
     </ClCompile>
     <ClCompile Include="aerohockey\util.cpp">
+      <Filter>Исходные файлы\Aerohockey</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\starter.cpp">
       <Filter>Исходные файлы\Aerohockey</Filter>
     </ClCompile>
   </ItemGroup>
@@ -299,9 +299,6 @@
     <ClInclude Include="Labyrinth\Labyrinth_config.h">
       <Filter>Файлы заголовков\Labyrinth</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\starter.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="aerohockey\config\config.hpp">
       <Filter>Файлы заголовков\Aerohockey\config</Filter>
     </ClInclude>
@@ -330,6 +327,9 @@
       <Filter>Файлы заголовков\Aerohockey\states</Filter>
     </ClInclude>
     <ClInclude Include="aerohockey\util.hpp">
+      <Filter>Файлы заголовков\Aerohockey</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\starter.h">
       <Filter>Файлы заголовков\Aerohockey</Filter>
     </ClInclude>
   </ItemGroup>

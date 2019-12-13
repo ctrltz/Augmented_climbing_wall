@@ -2,7 +2,7 @@
 #include "TimeClimb\TimeClimb_Game.h"
 #include "Labyrinth\Labyrinth_Game.h"
 #include "mainWindow.h"
-//#include "aerohockey/starter.h"
+#include "aerohockey/starter.h"
 #include "server.h"
 #include "Cliker.h"
 
@@ -30,7 +30,7 @@ int main()
 		case(myServer::PLAY):
 			MainWindow::getWindow().setMouseCursorVisible(true);
 			//switch (server->getData()[game])
-			switch (2)
+			switch (3)
 			{
 			case(myServer::SMASH_IT):
 			{
@@ -60,7 +60,7 @@ int main()
 			case(myServer::AEROHOCKEY):
 				std::cout << "AEROHOCKEY started \n";
 
-				//starter();
+				starter();
 				break;
 			case(myServer::TERRITORY):
 				std::cout << "TERRITORY started \n";

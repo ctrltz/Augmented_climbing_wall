@@ -1,13 +1,14 @@
 #include "config.hpp"
+#include "../../mainWindow.h"
 
 namespace Config
 {
     // General
     float fps = 120.f;
-    float screen_width = 800.f;
-    float screen_height = 600.f;
+    float screen_width = MainWindow::SCREEN_WIDTH;
+    float screen_height = MainWindow::SCREEN_HEIGHT;
     bool kinectControl = false;
-    sf::Uint32 window_mode = sf::Style::None;
+    sf::Uint32 window_mode = sf::Style::Fullscreen;
 
     // Game settings
     unsigned max_score = 5;
@@ -47,10 +48,10 @@ namespace Config
     float board_height = 60.f;
 
     // Resources
-    std::string font_scoreboard_path = "/media/fonts/DIN.ttf";
-    std::string sound_scored_path = "/media/sounds/scored.wav";
-    std::string sound_hit_path = "/media/sounds/hit.wav";
-    std::string sound_wall_path = "/media/sounds/wall.wav";
-    std::string texture_background_path = "/media/textures/background.jpg";
-    std::string texture_puck_path = "/media/textures/puck.png";
+    std::string font_scoreboard_path = "aerohockey/media/fonts/DIN.ttf";
+    std::string sound_scored_path = "aerohockey/media/sounds/scored.wav";
+    std::string sound_hit_path = "aerohockey/media/sounds/hit.wav";
+    std::string sound_wall_path = "aerohockey/media/sounds/wall.wav";
+    std::string texture_background_path = "aerohockey/media/textures/background.jpg";
+    std::string texture_puck_path = "aerohockey/media/textures/puck.png";
 }

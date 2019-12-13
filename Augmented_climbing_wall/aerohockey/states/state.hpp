@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "../objects/world.hpp"
 
 namespace States

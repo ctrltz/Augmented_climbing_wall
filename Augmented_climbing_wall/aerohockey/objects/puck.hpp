@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 struct Puck
 {

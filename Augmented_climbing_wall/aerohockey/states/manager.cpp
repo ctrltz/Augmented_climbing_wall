@@ -37,6 +37,20 @@ States::Type StateManager::getCurrentState() const
 
 void StateManager::processEvents()
 {
+	sf::Event event;
+
+	while (world.mWindow.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			current_state = States::Type::Exiting;
+			break;
+		default:
+			break;
+		}
+	}
+
     container[current_state]->processEvents();
 }
 

@@ -10,7 +10,7 @@ Puck::Puck (float radius, sf::Color color, sf::Vector2f position, sf::Vector2f v
     , current (0), capacity (Config::trace_capacity), trace_ (capacity)
 {    
     // Load puck texture and set up sprite
-    std::string path = getcwd_string() + Config::texture_puck_path;
+    std::string path = Config::texture_puck_path;
     if (!texture_.loadFromFile(path))
     {
         std::cerr << "Failed to load texture: " << path << "\n";

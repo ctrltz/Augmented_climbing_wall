@@ -25,7 +25,7 @@ public:
     int width_, height_;
 	float update_time;
     bool score_changed, kinectControl;
-    sf::RenderWindow mWindow;
+    sf::RenderWindow & mWindow;
     sf::Sprite background;
     sf::Texture bg_texture;
     sf::SoundBuffer scored, hit, wall;

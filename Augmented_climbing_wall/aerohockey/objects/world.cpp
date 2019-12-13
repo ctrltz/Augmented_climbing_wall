@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 
+#include "../../mainWindow.h"
 #include "world.hpp"
 
 using namespace std;
@@ -15,7 +16,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     , kinectControl (kinectControl)
     , puck_velocity (get_initial_velocity())
     , update_time (update_time)
-    , mWindow(sf::VideoMode(width, height), "Aerohockey", Config::window_mode)
+    , mWindow(MainWindow::getWindow())
     , puck (Config::puck_radius, sf::Color::White, sf::Vector2f(width / 2, height / 2), puck_velocity)
     , left (Config::paddle_radius, Config::red, update_time, kinect, true, kinectControl)
     , right (Config::paddle_radius, Config::green, update_time, kinect, false, kinectControl)
@@ -23,10 +24,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     , left_ready (Config::left_ready_button_position, Config::left_ready_button_size)
     , right_ready (Config::right_ready_button_position, Config::right_ready_button_size)
 {
-    mWindow.setFramerateLimit(Config::fps);
-    mWindow.setVerticalSyncEnabled(true);
-
-    std::string scored_path = getcwd_string() + Config::sound_scored_path;
+    std::string scored_path = Config::sound_scored_path;
     if (!scored.loadFromFile(scored_path))
     {
         std::cout << "Failed to load 'scored' sound: " << scored_path << "\n";
@@ -37,7 +35,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
         scored_sound.setBuffer(scored);
     }
 
-    std::string hit_path = getcwd_string() + Config::sound_hit_path;
+    std::string hit_path = Config::sound_hit_path;
     if (!hit.loadFromFile(hit_path))
     {
         std::cout << "Failed to load 'hit' sound: " << hit_path << "\n";
@@ -48,7 +46,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
         hit_sound.setBuffer(hit);
     }
 
-    std::string wall_path = getcwd_string() + Config::sound_wall_path;
+    std::string wall_path = Config::sound_wall_path;
     if (!wall.loadFromFile(wall_path))
     {
         std::cout << "Failed to load 'wall' sound: " << wall_path << "\n";
@@ -59,7 +57,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
         wall_sound.setBuffer(wall);
     }
 
-    std::string path = getcwd_string() + Config::texture_background_path;
+    std::string path = Config::texture_background_path;
     if (!bg_texture.loadFromFile(path))
     {
         std::cout << "Failed to load texture: " << path << "\n";

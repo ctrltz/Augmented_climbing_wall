@@ -1,25 +1,9 @@
 #include <cstdlib>
 #include <cmath>
-#include <direct.h> // _getcwd
 #include <iostream>
 
 #include "config/config.hpp"
 #include "util.hpp"
-
-std::string getcwd_string() {
-	char* buffer;
-
-	if ((buffer = _getcwd(NULL, 0)) == NULL)
-	{
-		std::cout << "Failed to retrieve CWD, problems with texture loading may occur.\n";
-		return "";
-	}
-	else
-	{
-		return std::string(buffer);
-		free(buffer);
-	}
-}
 
 
 float len2 (sf::Vector2f const v)
