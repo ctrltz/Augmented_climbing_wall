@@ -7,9 +7,7 @@ StateManager::StateManager(const States::Type& initial, World & world, BodyTrack
     registerState<StatePreparation>(States::Type::Preparation, world);
     registerState<StateGame>(States::Type::Game, world);
     registerState<StateResult>(States::Type::Result, world);
-
-    // Initialize Kinect tracking
-    kinect.Run();
+    registerState<StateExiting>(States::Type::Exiting, world);
 }
 
 StateManager::~StateManager()
@@ -32,29 +30,13 @@ void StateManager::activateState(const States::Type state)
     container[current_state]->reset();
 }
 
+States::Type StateManager::getCurrentState() const
+{
+    return current_state;
+}
+
 void StateManager::processEvents()
 {
-    sf::Event event;
-    while (world.mWindow.pollEvent(event))
-    {
-        if (event.type == sf::Event::Closed)
-        {
-            world.mWindow.close();
-        }
-        if (event.type == sf::Event::KeyPressed)
-        {
-            if (event.key.code == sf::Keyboard::Escape)
-            {
-                // Close only if paused
-                if (world.paused)
-                {
-                    world.mWindow.close();
-                }
-                world.paused = true;
-            }
-        }
-    }
-
     container[current_state]->processEvents();
 }
 
@@ -66,7 +48,6 @@ void StateManager::update(const float delta)
         kinect.Update(false);
     }
     current->update(delta);
-    //current->log();
 
     States::Type next_state = current->switchTo();
     if (next_state != current_state)

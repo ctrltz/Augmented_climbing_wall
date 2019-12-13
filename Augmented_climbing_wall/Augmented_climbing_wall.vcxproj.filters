@@ -31,6 +31,30 @@
     <Filter Include="Файлы заголовков\Labyrinth">
       <UniqueIdentifier>{d015fc55-f52d-4676-884b-31c206ad9fc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Aerohockey">
+      <UniqueIdentifier>{2caf34be-24b6-4253-9b15-e20c0256e410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Aerohockey\config">
+      <UniqueIdentifier>{41d6cd10-d5df-4cd5-bb4f-4e2cc6c97d68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Aerohockey\objects">
+      <UniqueIdentifier>{ebc64662-e97c-4a17-9235-0c0f38cceabf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Aerohockey\states">
+      <UniqueIdentifier>{e24bb158-42a3-466b-b7c3-fdf3cf93e76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Aerohockey">
+      <UniqueIdentifier>{271ddc87-8094-4610-ad3d-53fa8b438ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Aerohockey\config">
+      <UniqueIdentifier>{d951414e-1561-4d1d-896c-72e549c47dca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Aerohockey\objects">
+      <UniqueIdentifier>{b204b487-b5f0-4444-9243-bd6dd14403ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Aerohockey\states">
+      <UniqueIdentifier>{c74eea7e-ef15-4eea-94e7-a34984850f02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,14 +150,50 @@
     <ClCompile Include="body_tracker.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Smash_It\testConfig.cpp">
       <Filter>Исходные файлы\Smash_It</Filter>
     </ClCompile>
     <ClCompile Include="Labyrinth\Labyrinth_config.cpp">
       <Filter>Исходные файлы\Labyrinth</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\starter.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\config\config.cpp">
+      <Filter>Исходные файлы\Aerohockey\config</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\board.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\paddle.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\player.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\puck.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\ready_button.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\objects\world.cpp">
+      <Filter>Исходные файлы\Aerohockey\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\states\manager.cpp">
+      <Filter>Исходные файлы\Aerohockey\states</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\states\game.cpp">
+      <Filter>Исходные файлы\Aerohockey\states</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\states\preparation.cpp">
+      <Filter>Исходные файлы\Aerohockey\states</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\states\result.cpp">
+      <Filter>Исходные файлы\Aerohockey\states</Filter>
+    </ClCompile>
+    <ClCompile Include="aerohockey\util.cpp">
+      <Filter>Исходные файлы\Aerohockey</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -233,14 +293,44 @@
     <ClInclude Include="body_tracker.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="util.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Smash_It\testConfig.h">
       <Filter>Файлы заголовков\Smash_It</Filter>
     </ClInclude>
     <ClInclude Include="Labyrinth\Labyrinth_config.h">
       <Filter>Файлы заголовков\Labyrinth</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\starter.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\config\config.hpp">
+      <Filter>Файлы заголовков\Aerohockey\config</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\board.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\paddle.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\player.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\puck.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\ready_button.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\objects\world.hpp">
+      <Filter>Файлы заголовков\Aerohockey\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\states\manager.hpp">
+      <Filter>Файлы заголовков\Aerohockey\states</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\states\state.hpp">
+      <Filter>Файлы заголовков\Aerohockey\states</Filter>
+    </ClInclude>
+    <ClInclude Include="aerohockey\util.hpp">
+      <Filter>Файлы заголовков\Aerohockey</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

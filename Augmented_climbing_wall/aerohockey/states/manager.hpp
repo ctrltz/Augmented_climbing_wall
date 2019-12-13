@@ -17,6 +17,7 @@ struct StateManager
     void registerState(const States::Type state, World & world);
 
     void activateState(const States::Type state);
+    States::Type getCurrentState() const;
     void processEvents();
     void update(const float delta);
     void render();

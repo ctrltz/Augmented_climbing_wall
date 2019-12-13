@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include "world.hpp"
-#include "../util.hpp"
 
 using namespace std;
 
@@ -13,33 +12,77 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     : width_(width)
     , height_(height)
     , score_changed(false)
-    , paused(false)
-    , use_paddle_velocity(false)
     , kinectControl (kinectControl)
-    , puck_velocity (sf::Vector2f(400.f, 400.f))
+    , puck_velocity (get_initial_velocity())
     , update_time (update_time)
-    , mWindow(sf::VideoMode(width, height), "Aerohockey", sf::Style::None)
-    , puck (height / 20, sf::Color::White, sf::Vector2f(width / 2, height / 2), puck_velocity)
-    , left (height / 20, sf::Color(204, 0, 0), update_time, kinect, true, kinectControl)
-    , right (height / 20, sf::Color(0, 102, 0), update_time, kinect, false, kinectControl)
-    , board (&left, &right, 0.5)
-    , left_ready (sf::Vector2f(width / 4, height / 2), sf::Vector2f(width / 10, width / 10))
-    , right_ready (sf::Vector2f(width * 3 / 4, height / 2), sf::Vector2f(width / 10, width / 10))
+    , mWindow(sf::VideoMode(width, height), "Aerohockey", Config::window_mode)
+    , puck (Config::puck_radius, sf::Color::White, sf::Vector2f(width / 2, height / 2), puck_velocity)
+    , left (Config::paddle_radius, Config::red, update_time, kinect, true, kinectControl)
+    , right (Config::paddle_radius, Config::green, update_time, kinect, false, kinectControl)
+    , board (&left, &right, Config::game_length)
+    , left_ready (Config::left_ready_button_position, Config::left_ready_button_size)
+    , right_ready (Config::right_ready_button_position, Config::right_ready_button_size)
 {
-    mWindow.setFramerateLimit(60);
+    mWindow.setFramerateLimit(Config::fps);
     mWindow.setVerticalSyncEnabled(true);
 
-    left_border.setPosition(0.f, 0.f);
-    left_border.setSize(sf::Vector2f(2.f, height_ - 60.f));
-    left_border.setFillColor(sf::Color(204, 0, 0));
+    std::string scored_path = getcwd_string() + Config::sound_scored_path;
+    if (!scored.loadFromFile(scored_path))
+    {
+        std::cout << "Failed to load 'scored' sound: " << scored_path << "\n";
+    }
+    else
+    {
+        std::cout << "Successfully loaded 'scored' sound: " << scored_path << "\n";
+        scored_sound.setBuffer(scored);
+    }
 
-    right_border.setPosition(798.f, 0.f);
-    right_border.setSize(sf::Vector2f(2.f, height_ - 60.f));
-    right_border.setFillColor(sf::Color(0, 102, 0));
+    std::string hit_path = getcwd_string() + Config::sound_hit_path;
+    if (!hit.loadFromFile(hit_path))
+    {
+        std::cout << "Failed to load 'hit' sound: " << hit_path << "\n";
+    }
+    else
+    {
+        std::cout << "Successfully loaded 'hit' sound: " << hit_path << "\n";
+        hit_sound.setBuffer(hit);
+    }
+
+    std::string wall_path = getcwd_string() + Config::sound_wall_path;
+    if (!wall.loadFromFile(wall_path))
+    {
+        std::cout << "Failed to load 'wall' sound: " << wall_path << "\n";
+    }
+    else
+    {
+        std::cout << "Successfully loaded 'wall' sound: " << wall_path << "\n";
+        wall_sound.setBuffer(wall);
+    }
+
+    std::string path = getcwd_string() + Config::texture_background_path;
+    if (!bg_texture.loadFromFile(path))
+    {
+        std::cout << "Failed to load texture: " << path << "\n";
+    }
+    else
+    {
+        std::cout << "Successfully loaded background texture: " << path << "\n";
+        background.setTexture(bg_texture);
+        background.setScale(width_ / background.getLocalBounds().width,
+                            height_ / background.getLocalBounds().height);
+    }
 
     left_border.setPosition(0.f, 0.f);
-    left_border.setSize(sf::Vector2f(800.f, 2.f));
-    left_border.setFillColor(sf::Color::White);
+    left_border.setSize(sf::Vector2f(width_ / 2, height_));
+    left_border.setFillColor(sf::Color::Transparent);
+    left_border.setOutlineColor(sf::Color(242, 99, 80, 200));
+    left_border.setOutlineThickness(-10.f);
+
+    right_border.setPosition(width_ / 2, 0.f);
+    right_border.setSize(sf::Vector2f(width_ / 2, height_));
+    right_border.setOutlineColor(sf::Color(102, 214, 92, 200));
+    right_border.setFillColor(sf::Color::Transparent);
+    right_border.setOutlineThickness(-10.f);
 }
 
 
@@ -67,7 +110,7 @@ void World::update()
     {
         collide_objects(right.paddles()[i], puck);
     }
-    puck.walls_collide(width_, height_);
+    puck.walls_collide(width_, height_, wall_sound);
 
     score_changed = goal_scored();
     board.update(update_time, score_changed);
@@ -85,7 +128,7 @@ void World::collide_objects(Paddle & first, Puck & second)
     if (dist2(x1, x2) <= threshold)
     {
         sf::Vector2f v1 = sf::Vector2f(0.f, 0.f), v2 = second.velocity();
-        if (use_paddle_velocity)
+        if (Config::use_paddle_velocity)
         {
             v1 = first.velocity();
         }
@@ -103,59 +146,44 @@ void World::collide_objects(Paddle & first, Puck & second)
         sf::Vector2f x1 = first.position(), x2 = second.position();
         second.velocity() = v2 - 2.f * (x2 - x1) * dot(v2 - v1, x2 - x1) / len2(x2 - x1);
 
-        // first.update(width, height, rewind_time);
+		if (Config::use_velocity_cap)
+		{
+			float velocity_module = sqrt(len2(second.velocity()));
+			if (velocity_module > Config::max_puck_velocity)
+			{
+				float scale = Config::max_puck_velocity / velocity_module;
+				second.velocity() *= scale;
+			}
+		}
+
         second.update(rewind_time);
-    }
-}
-
-
-void World::collide_objects(Puck * first, Puck * second, int width, int height)
-{
-    float r1 = first->radius();
-    float r2 = second->radius();
-    float threshold = (r1 + r2) * (r1 + r2);
-    sf::Vector2f x1 = first->position(), x2 = second->position();
-
-    float dist = dist2(x1, x2);
-    if (dist <= threshold)
-    {
-        sf::Vector2f v1 = first->velocity(), v2 = second->velocity();
-
-        float rewind_time = 0.f;
-        if (dist < threshold)
-        {
-            sf::Vector2f dv = v1 - v2;
-            rewind_time = (r1 + r2 - sqrt(dist)) / sqrt(len2(dv));
-            std::cout << r1 + r2 << " " << sqrt(dist) << " " << dv.x << " " << dv.y << " " << rewind_time << "\n";
-            first->moveTo(x1 - rewind_time * v1);
-            second->moveTo(x2 - rewind_time * v2);
-        }
-
-        sf::Vector2f x1 = first->position(), x2 = second->position();
-        first->velocity() = v1 - (x1 - x2) * dot(v1 - v2, x1 - x2) / len2(x1 - x2);
-        second->velocity() = v2 - (x2 - x1) * dot(v2 - v1, x2 - x1) / len2(x2 - x1);
-
-        first->update(rewind_time);
-        second->update(rewind_time);
+        hit_sound.play();
     }
 }
 
 bool World::goal_scored()
 {
-    sf::Vector2f velocity = puck_velocity;
+    // Get random velocity for puck reset
+    sf::Vector2f velocity = get_initial_velocity();
 
     if ((puck.position().x < 0) || (puck.position().x > width_))
     {
         if (puck.position().x < 0)
         {
             right.scored();
-            velocity.x *= -1;
+
+            // Right has scored -> puck goes left -> vx should be negative
+            velocity.x = -1.f * abs(velocity.x);
         }
         else
         {
             left.scored();
+
+            // Left has scored -> puck goes right -> vx should be positive
+            velocity.x = abs(velocity.x);
         }
         puck.reset(sf::Vector2f(width_ / 2, height_ / 2), velocity);
+        scored_sound.play();
         return true;
     }
     return false;
@@ -165,19 +193,14 @@ void World::render()
 {
     mWindow.clear();
 
+    mWindow.draw(background);
+
     mWindow.draw(left_border);
     mWindow.draw(right_border);
-    mWindow.draw(top_border);
 
-    mWindow.draw(puck.shape());
-    for (int i = 0; i < left.n_limbs; i++)
-    {
-        mWindow.draw(left.paddles()[i].shape());
-    }
-    for (int i = 0; i < right.n_limbs; i++)
-    {
-        mWindow.draw(right.paddles()[i].shape());
-    }
+    left.render(mWindow);
+    right.render(mWindow);
+    puck.render(mWindow);
 
     board.render(mWindow);
 
@@ -189,6 +212,6 @@ void World::reset()
 {
     left.reset();
     right.reset();
-    puck.reset(sf::Vector2f(width_ / 2, height_ / 2), puck_velocity);
+    puck.reset(sf::Vector2f(width_ / 2, height_ / 2), get_initial_velocity());
     board.reset();
 }

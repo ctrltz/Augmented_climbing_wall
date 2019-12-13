@@ -13,6 +13,7 @@ public:
     ~Player();
     void handleInput();
     void update();
+    void render(sf::RenderWindow & window);
     std::vector<Paddle> & paddles();
     unsigned score();
     void scored();

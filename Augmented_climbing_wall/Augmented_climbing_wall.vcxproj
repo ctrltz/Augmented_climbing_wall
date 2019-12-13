@@ -127,6 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aerohockey\config\config.cpp" />
+    <ClCompile Include="aerohockey\objects\board.cpp" />
+    <ClCompile Include="aerohockey\objects\paddle.cpp" />
+    <ClCompile Include="aerohockey\objects\player.cpp" />
+    <ClCompile Include="aerohockey\objects\puck.cpp" />
+    <ClCompile Include="aerohockey\objects\ready_button.cpp" />
+    <ClCompile Include="aerohockey\objects\world.cpp" />
+    <ClCompile Include="aerohockey\starter.cpp" />
+    <ClCompile Include="aerohockey\states\game.cpp" />
+    <ClCompile Include="aerohockey\states\manager.cpp" />
+    <ClCompile Include="aerohockey\states\preparation.cpp" />
+    <ClCompile Include="aerohockey\states\result.cpp" />
+    <ClCompile Include="aerohockey\util.cpp" />
     <ClCompile Include="body_tracker.cpp" />
     <ClCompile Include="Cliker.cpp" />
     <ClCompile Include="Labyrinth\CircleLvL.cpp" />
@@ -160,9 +173,19 @@
     <ClCompile Include="TimeClimb\TimeClimb_Target.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_Timer.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_VisibleGameObject.cpp" />
-    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aerohockey\config\config.hpp" />
+    <ClInclude Include="aerohockey\objects\board.hpp" />
+    <ClInclude Include="aerohockey\objects\paddle.hpp" />
+    <ClInclude Include="aerohockey\objects\player.hpp" />
+    <ClInclude Include="aerohockey\objects\puck.hpp" />
+    <ClInclude Include="aerohockey\objects\ready_button.hpp" />
+    <ClInclude Include="aerohockey\objects\world.hpp" />
+    <ClInclude Include="aerohockey\starter.h" />
+    <ClInclude Include="aerohockey\states\manager.hpp" />
+    <ClInclude Include="aerohockey\states\state.hpp" />
+    <ClInclude Include="aerohockey\util.hpp" />
     <ClInclude Include="body_tracker.h" />
     <ClInclude Include="Cliker.h" />
     <ClInclude Include="Labyrinth\circleLvL.h" />
@@ -197,7 +220,6 @@
     <ClInclude Include="TimeClimb\TimeClimb_Target.h" />
     <ClInclude Include="TimeClimb\TimeClimb_Timer.h" />
     <ClInclude Include="TimeClimb\TimeClimb_VisibleGameObject.h" />
-    <ClInclude Include="util.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

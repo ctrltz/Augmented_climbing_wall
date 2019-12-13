@@ -1,6 +1,3 @@
-#include <SFML/Graphics.hpp>
-
-#include "../control/kinect/body_tracker.h"
 #include "player.hpp"
 
 
@@ -51,6 +48,14 @@ void Player::update()
     for (int i = 0; i < n_limbs; i++)
     {
         paddles_[i].update(kinect, static_cast<Limbs::Type>(i), left, kinectControl);
+    }
+}
+
+void Player::render(sf::RenderWindow& window)
+{
+    for (int i = 0; i < n_limbs; i++)
+    {
+        paddles_[i].render(window, left);
     }
 }
 

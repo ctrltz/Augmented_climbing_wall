@@ -5,7 +5,7 @@
 Paddle::Paddle()
     : radius_(0), color_(sf::Color::Black), position_(sf::Vector2f(0.f, 0.f))
     , velocity_(0.f), vx_(0), vy_(0)
-    , update_time (0.f)
+    , update_time (0.f), valid_ (true)
     , up_(sf::Keyboard::W), down_(sf::Keyboard::S), left_ (sf::Keyboard::A), right_ (sf::Keyboard::D)
 {
 
@@ -21,6 +21,8 @@ Paddle::Paddle (float radius, sf::Color color, sf::Vector2f position, float velo
     current_velocity_ = sf::Vector2f(0.f, 0.f);
     shape_.setRadius(radius_);
     shape_.setFillColor(color_);
+    shape_.setOutlineColor(color_);
+    shape_.setOutlineThickness(-5.f);
     shape_.setOrigin(radius_, radius_);
     shape_.setPosition(position_);
 }
@@ -50,8 +52,6 @@ void Paddle::handleInput()
         vx_ *= SCALE_FACTOR;
         vy_ *= SCALE_FACTOR;
     }
-
-    //LOG(INFO) << "Velocity: (" << vx_ << ", " << vy_ << ")";
 }
 
 
@@ -78,6 +78,38 @@ void Paddle::update (BodyTracker & kinect, const Limbs::Type type, bool left, bo
         shape_.move(current_velocity_ * update_time);
         position_ = shape_.getPosition();
     }
+}
+
+void Paddle::render(sf::RenderWindow& window, bool left)
+{
+    sf::Vector2u window_size = window.getSize();
+    valid_ = true;
+
+    if ((position_.y < 0) || (position_.y > window_size.y))
+    {
+        valid_ = false;
+    }
+
+    if ((left) && ((position_.x < 0) || (position_.x > window_size.x / 2)))
+    {
+        valid_ = false;
+    }
+
+    if ((!left) && ((position_.x < window_size.x / 2) || (position_.x > window_size.x)))
+    {
+        valid_ = false;
+    }
+
+    if (valid_)
+    {
+        shape_.setFillColor(color_);
+    }
+    else
+    {
+        shape_.setFillColor(sf::Color::Transparent);
+    }
+
+    window.draw(shape_);
 }
 
 void Paddle::moveTo(sf::Vector2f position)

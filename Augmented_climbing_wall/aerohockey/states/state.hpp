@@ -6,7 +6,7 @@ namespace States
 {
     enum Type
     {
-        Preparation, Game, Result
+        Preparation, Game, Result, Exiting
     };
 };
 
@@ -16,7 +16,7 @@ struct State
     virtual ~State() { }
 
     virtual void processEvents() { }
-    virtual void render() = 0;
+    virtual void render() { }
     virtual States::Type switchTo() = 0;
 
     virtual void update(const float delta)
@@ -61,8 +61,6 @@ struct StateGame : public State
     void render() override;
     void reset() override;
     States::Type switchTo() override;
-
-    unsigned max_score = 5;
 };
 
 struct StateResult : public State
@@ -72,4 +70,15 @@ struct StateResult : public State
     ~StateResult() { }
     void render() override;
     States::Type switchTo() override;
+};
+
+struct StateExiting : public State
+{
+    StateExiting(States::Type type, World& world) : State(type, world) { }
+
+    ~StateExiting() { }
+    States::Type switchTo() override
+    {
+        return States::Type::Exiting;
+    }
 };

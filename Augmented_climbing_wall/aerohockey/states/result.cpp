@@ -6,6 +6,7 @@ void StateResult::render()
 {
     world.mWindow.clear();
 
+    world.mWindow.draw(world.background);
     world.board.render(world.mWindow);
 
     world.mWindow.display();
@@ -13,9 +14,9 @@ void StateResult::render()
 
 States::Type StateResult::switchTo()
 {
-    if (timeElapsed > 5.f)
+    if (timeElapsed > Config::result_demonstration_time)
     {
-        return States::Type::Preparation;
+        return States::Type::Exiting;
     }
     return States::Type::Result;
 }

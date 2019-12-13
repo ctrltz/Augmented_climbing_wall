@@ -2,44 +2,83 @@
 #include <iostream>
 
 #include "puck.hpp"
+#include "../config/config.hpp"
+#include "../util.hpp"
 
 Puck::Puck (float radius, sf::Color color, sf::Vector2f position, sf::Vector2f velocity)
     : radius_ (radius), color_ (color), position_ (position), velocity_ (velocity)
-{
-    shape_.setRadius(radius_);
-    shape_.setFillColor(color_);
-    shape_.setOrigin(radius_, radius_);
-    shape_.setPosition(position_);
+    , current (0), capacity (Config::trace_capacity), trace_ (capacity)
+{    
+    // Load puck texture and set up sprite
+    std::string path = getcwd_string() + Config::texture_puck_path;
+    if (!texture_.loadFromFile(path))
+    {
+        std::cerr << "Failed to load texture: " << path << "\n";
+    }
+    else
+    {
+        std::cout << "Successfully loaded puck texture: " << path << "\n";
+        sprite_.setTexture(texture_);
+        sprite_.setOrigin(texture_.getSize().x / 2, texture_.getSize().y / 2);
+        sprite_.setScale(2 * radius_ / texture_.getSize().x,
+                         2 * radius_ / texture_.getSize().y);
+    }
+
+    sprite_.setPosition(position_);
 }
 
 
 void Puck::moveTo (sf::Vector2f position)
 {
     position_ = position;
-    shape_.setPosition(position_);
+    sprite_.setPosition(position_);
 }
 
 void Puck::update (float delta)
 {
-    //std::cout << shape_.getPosition().x << " " << shape_.getPosition().y << "\n";
-    //std::cout << delta << " " << velocity_.x * delta << " " << velocity_.y * delta << "\n";
+    trace_[current] = position_;
+    current = (current + 1) % capacity;
+
     position_ += velocity_ * delta;
-    shape_.move(velocity_ * delta);
-    //std::cout << "Update (" << position_.x << ", " << position_.y << ") - (" << velocity_.x << ", " << velocity_.y << ")\n";
-    //std::cout << "Update collide (" << position_.x << ", " << position_.y << ") - (" << velocity_.x << ", " << velocity_.y << ")\n";
+    sprite_.move(velocity_ * delta);
 }
 
+void Puck::render(sf::RenderWindow& window)
+{
+    float min_radius = Config::trace_min_radius, max_radius = radius_, current_radius = radius_;
+    float step = (max_radius - min_radius) / capacity;
+    for (int i = 0; i < capacity; i++)
+    {
+        current_radius -= step;
+
+        int trace_index = current - i - 1;
+        if (trace_index < 0)
+        {
+            trace_index = (trace_index + capacity) % capacity;
+        }
+
+        sf::CircleShape trace(current_radius);
+        trace.setOrigin(current_radius, current_radius);
+        trace.setPosition(trace_[trace_index]);
+        trace.setFillColor(Config::trace_color);
+
+        window.draw(trace);
+    }
+
+    window.draw(sprite_);
+}
 
 void Puck::reset(sf::Vector2f position, sf::Vector2f velocity)
 {
     moveTo(position);
     velocity_ = velocity;
+    trace_.assign(capacity, sf::Vector2f(0.f, 0.f));
 }
 
 
-sf::CircleShape Puck::shape()
+sf::Sprite & Puck::shape()
 {
-    return shape_;
+    return sprite_;
 }
 
 
@@ -61,12 +100,10 @@ sf::Vector2f & Puck::velocity()
 }
 
 
-void Puck::walls_collide (float width, float height)
+void Puck::walls_collide (float width, float height, sf::Sound & sound)
 {
     if ((position_.y <= radius_) || (position_.y >= height - radius_))
     {
-        // std::cout << "\nCollide with wall (" << position_.x << ", " << position_.y << ") - (" << velocity_.x << ", " << velocity_.y << ")\n";
-
         velocity_.y *= -1;
         if (position_.y <= radius_)
         {
@@ -76,7 +113,7 @@ void Puck::walls_collide (float width, float height)
         {
             position_.y = height - radius_ - 1.f;
         }
-        shape_.setPosition(position_);
-        // std::cout << "After wall collide (" << position_.x << ", " << position_.y << ") - (" << velocity_.x << ", " << velocity_.y << ")\n";
+        sprite_.setPosition(position_);
+        sound.play();
     }
 }
