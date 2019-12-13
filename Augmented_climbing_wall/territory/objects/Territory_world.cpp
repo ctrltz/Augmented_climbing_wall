@@ -22,7 +22,7 @@ World::World(float width, float height, float update_time, BodyTracker & kinect,
     , mWindow(MainWindow::getWindow())
     , left (height / 20, Config::red, update_time, kinect, true, kinectControl)
     , right (height / 20, Config::green, update_time, kinect, false, kinectControl)
-    , board (left, right, 0.5)
+    , board (left, right)
 	, map (width, height, 30, left, right)
     , left_ready (sf::Vector2f(width / 4, height / 2), sf::Vector2f(width / 10, width / 10))
     , right_ready (sf::Vector2f(width * 3 / 4, height / 2), sf::Vector2f(width / 10, width / 10))
