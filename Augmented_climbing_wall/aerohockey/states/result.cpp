@@ -2,6 +2,8 @@
 
 #include "state.hpp"
 
+using namespace Aerohockey;
+
 void StateResult::render()
 {
     world.mWindow.clear();

@@ -1,6 +1,8 @@
 #include <iostream>
 #include "manager.hpp"
 
+using namespace Aerohockey;
+
 StateManager::StateManager(const States::Type& initial, World & world, BodyTracker & kinect, bool kinectControl)
     : current_state (initial), world (world), kinect (kinect), kinectControl (kinectControl)
 {

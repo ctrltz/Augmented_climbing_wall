@@ -2,6 +2,8 @@
 
 #define SCALE_FACTOR 0.70711f
 
+using namespace Aerohockey;
+
 Paddle::Paddle()
     : radius_(0), color_(sf::Color::Black), position_(sf::Vector2f(0.f, 0.f))
     , velocity_(0.f), vx_(0), vy_(0)

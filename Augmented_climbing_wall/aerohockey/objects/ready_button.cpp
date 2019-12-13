@@ -2,6 +2,8 @@
 
 #include "ready_button.hpp"
 
+using namespace Aerohockey;
+
 ReadyButton::ReadyButton(sf::Vector2f position, sf::Vector2f size)
     : position_ (position), size_ (size)
 {

@@ -1,5 +1,6 @@
 #include "player.hpp"
 
+using namespace Aerohockey;
 
 Player::Player (float radius, sf::Color color, float update_time, BodyTracker & kinect, bool left, bool kinectControl)
       : kinect (kinect), left (left), kinectControl (kinectControl), score_(0)

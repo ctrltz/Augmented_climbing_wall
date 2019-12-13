@@ -7,7 +7,7 @@
 #include "world.hpp"
 
 using namespace std;
-
+using namespace Aerohockey;
 
 World::World(float width, float height, float update_time, BodyTracker & kinect, bool kinectControl)
     : width_(width)

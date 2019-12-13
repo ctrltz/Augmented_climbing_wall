@@ -5,6 +5,7 @@
 #include "config/config.hpp"
 #include "util.hpp"
 
+constexpr auto PI = 3.14159265358979f;
 
 float len2 (sf::Vector2f const v)
 {
@@ -28,10 +29,10 @@ sf::Vector2f get_initial_velocity()
 	int angle = std::rand() % 360;
 
 	// Avoid too vertical directions
-	if (((angle > 45) && (angle < 135)) || ((angle > 225) && (angle < 315)))
+	if (((angle > 60) && (angle < 150)) || ((angle > 240) && (angle < 300)))
 	{
 		angle = (angle + 90) % 360;
 	}
 	
-	return sf::Vector2f(cos(angle), sin(angle)) * Config::initial_puck_velocity;
+	return sf::Vector2f(cos(PI * angle / 180), sin(PI * angle / 180)) * Aerohockey::Config::initial_puck_velocity;
 }

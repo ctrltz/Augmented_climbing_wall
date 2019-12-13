@@ -6,6 +6,7 @@
 #include "board.hpp"
 
 using namespace std;
+using namespace Aerohockey;
 
 Scoreboard::Scoreboard(Player * left, Player * right, float gameDuration)
     : left_ (left), right_ (right), gameDuration_ (gameDuration)

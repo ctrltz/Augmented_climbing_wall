@@ -35,7 +35,7 @@ int main()
 			case(myServer::SMASH_IT):
 			{
 				std::cout << "SMASh_it started \n";
-		
+
 				Smash_It::Game smash_It(MainWindow::getWindow());
 				smash_It.Start(*server);
 				break;
@@ -58,13 +58,18 @@ int main()
 				break;
 			}
 			case(myServer::AEROHOCKEY):
+			{
 				std::cout << "AEROHOCKEY started \n";
 
-				starter();
+				Aerohockey::Starter aerohockey;
+				aerohockey.start(*server);
 				break;
+			}
 			case(myServer::TERRITORY):
+			{
 				std::cout << "TERRITORY started \n";
 				break;
+			}
 			default:
 				break;
 			}

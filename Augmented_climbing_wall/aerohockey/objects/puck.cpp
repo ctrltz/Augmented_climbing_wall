@@ -5,6 +5,8 @@
 #include "../config/config.hpp"
 #include "../util.hpp"
 
+using namespace Aerohockey;
+
 Puck::Puck (float radius, sf::Color color, sf::Vector2f position, sf::Vector2f velocity)
     : radius_ (radius), color_ (color), position_ (position), velocity_ (velocity)
     , current (0), capacity (Config::trace_capacity), trace_ (capacity)

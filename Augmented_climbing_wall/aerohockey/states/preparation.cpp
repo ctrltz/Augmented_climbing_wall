@@ -3,6 +3,8 @@
 
 #include "state.hpp"
 
+using namespace Aerohockey;
+
 void StatePreparation::processEvents()
 {
     world.processEvents();
