@@ -127,19 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="aerohockey\config\config.cpp" />
-    <ClCompile Include="aerohockey\objects\board.cpp" />
-    <ClCompile Include="aerohockey\objects\paddle.cpp" />
-    <ClCompile Include="aerohockey\objects\player.cpp" />
-    <ClCompile Include="aerohockey\objects\puck.cpp" />
-    <ClCompile Include="aerohockey\objects\ready_button.cpp" />
-    <ClCompile Include="aerohockey\objects\world.cpp" />
-    <ClCompile Include="aerohockey\starter.cpp" />
-    <ClCompile Include="aerohockey\states\game.cpp" />
-    <ClCompile Include="aerohockey\states\manager.cpp" />
-    <ClCompile Include="aerohockey\states\preparation.cpp" />
-    <ClCompile Include="aerohockey\states\result.cpp" />
-    <ClCompile Include="aerohockey\util.cpp" />
+    <ClCompile Include="aerohockey\config\Aerohockey_config.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_board.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_paddle.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_player.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_puck.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_ready_button.cpp" />
+    <ClCompile Include="aerohockey\objects\Aerohockey_world.cpp" />
+    <ClCompile Include="aerohockey\Aerohockey_starter.cpp" />
+    <ClCompile Include="aerohockey\states\Aerohockey_game.cpp" />
+    <ClCompile Include="aerohockey\states\Aerohockey_manager.cpp" />
+    <ClCompile Include="aerohockey\states\Aerohockey_preparation.cpp" />
+    <ClCompile Include="aerohockey\states\Aerohockey_result.cpp" />
     <ClCompile Include="body_tracker.cpp" />
     <ClCompile Include="Cliker.cpp" />
     <ClCompile Include="Labyrinth\CircleLvL.cpp" />
@@ -166,6 +165,18 @@
     <ClCompile Include="Smash_It\Smash_It_Timer.cpp" />
     <ClCompile Include="Smash_It\Smash_It_VisibleGameObject.cpp" />
     <ClCompile Include="Smash_It\testConfig.cpp" />
+    <ClCompile Include="territory\config\Territory_config.cpp" />
+    <ClCompile Include="territory\objects\Territory_board.cpp" />
+    <ClCompile Include="territory\objects\Territory_map.cpp" />
+    <ClCompile Include="territory\objects\Territory_paddle.cpp" />
+    <ClCompile Include="territory\objects\Territory_player.cpp" />
+    <ClCompile Include="territory\objects\Territory_ready_button.cpp" />
+    <ClCompile Include="territory\objects\Territory_world.cpp" />
+    <ClCompile Include="territory\Territory_starter.cpp" />
+    <ClCompile Include="territory\states\Territory_game.cpp" />
+    <ClCompile Include="territory\states\Territory_manager.cpp" />
+    <ClCompile Include="territory\states\Territory_preparation.cpp" />
+    <ClCompile Include="territory\states\Territory_result.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_CustomScreen.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_Game.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_GameObjectManager.cpp" />
@@ -173,19 +184,19 @@
     <ClCompile Include="TimeClimb\TimeClimb_Target.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_Timer.cpp" />
     <ClCompile Include="TimeClimb\TimeClimb_VisibleGameObject.cpp" />
+    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aerohockey\config\config.hpp" />
-    <ClInclude Include="aerohockey\objects\board.hpp" />
-    <ClInclude Include="aerohockey\objects\paddle.hpp" />
-    <ClInclude Include="aerohockey\objects\player.hpp" />
-    <ClInclude Include="aerohockey\objects\puck.hpp" />
-    <ClInclude Include="aerohockey\objects\ready_button.hpp" />
-    <ClInclude Include="aerohockey\objects\world.hpp" />
-    <ClInclude Include="aerohockey\starter.h" />
-    <ClInclude Include="aerohockey\states\manager.hpp" />
-    <ClInclude Include="aerohockey\states\state.hpp" />
-    <ClInclude Include="aerohockey\util.hpp" />
+    <ClInclude Include="aerohockey\config\Aerohockey_config.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_board.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_paddle.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_player.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_puck.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_ready_button.hpp" />
+    <ClInclude Include="aerohockey\objects\Aerohockey_world.hpp" />
+    <ClInclude Include="aerohockey\Aerohockey_starter.h" />
+    <ClInclude Include="aerohockey\states\Aerohockey_manager.hpp" />
+    <ClInclude Include="aerohockey\states\Aerohockey_state.hpp" />
     <ClInclude Include="body_tracker.h" />
     <ClInclude Include="Cliker.h" />
     <ClInclude Include="Labyrinth\circleLvL.h" />
@@ -213,6 +224,16 @@
     <ClInclude Include="Smash_It\Smash_It_VisibleGameObject.h" />
     <ClInclude Include="Smash_It\testConfig.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="territory\config\Territory_config.hpp" />
+    <ClInclude Include="territory\objects\Territory_board.hpp" />
+    <ClInclude Include="territory\objects\Territory_map.hpp" />
+    <ClInclude Include="territory\objects\Territory_paddle.hpp" />
+    <ClInclude Include="territory\objects\Territory_player.hpp" />
+    <ClInclude Include="territory\objects\Territory_ready_button.hpp" />
+    <ClInclude Include="territory\objects\Territory_world.hpp" />
+    <ClInclude Include="territory\Territory_starter.h" />
+    <ClInclude Include="territory\states\Territory_manager.hpp" />
+    <ClInclude Include="territory\states\Territory_state.hpp" />
     <ClInclude Include="TimeClimb\TimeClimb_CustomScreen.h" />
     <ClInclude Include="TimeClimb\TimeClimb_Game.h" />
     <ClInclude Include="TimeClimb\TimeClimb_GameObjectManager.h" />
@@ -220,6 +241,7 @@
     <ClInclude Include="TimeClimb\TimeClimb_Target.h" />
     <ClInclude Include="TimeClimb\TimeClimb_Timer.h" />
     <ClInclude Include="TimeClimb\TimeClimb_VisibleGameObject.h" />
+    <ClInclude Include="util.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

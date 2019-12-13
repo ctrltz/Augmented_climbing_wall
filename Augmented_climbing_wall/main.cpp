@@ -2,7 +2,8 @@
 #include "TimeClimb\TimeClimb_Game.h"
 #include "Labyrinth\Labyrinth_Game.h"
 #include "mainWindow.h"
-#include "aerohockey/starter.h"
+#include "aerohockey/Aerohockey_starter.h"
+#include "territory/Territory_starter.h"
 #include "server.h"
 #include "Cliker.h"
 
@@ -68,6 +69,8 @@ int main()
 			case(myServer::TERRITORY):
 			{
 				std::cout << "TERRITORY started \n";
+
+				Territory::Starter territory;
 				break;
 			}
 			default:

@@ -55,6 +55,30 @@
     <Filter Include="Файлы заголовков\Aerohockey\states">
       <UniqueIdentifier>{c74eea7e-ef15-4eea-94e7-a34984850f02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Territory">
+      <UniqueIdentifier>{0a8cedeb-4268-4932-ad40-b938df7718bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Territory\config">
+      <UniqueIdentifier>{991ceb8b-410c-4be3-8311-1890b5d15937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Territory\states">
+      <UniqueIdentifier>{97734949-d43a-4f26-9558-331fd7e9df64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Territory">
+      <UniqueIdentifier>{51e44127-9aa7-49b5-a4d2-1bd76cd8abd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Territory\config">
+      <UniqueIdentifier>{5889c106-3e49-45cd-a7a1-f1f2ac28e8ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Territory\objects">
+      <UniqueIdentifier>{0a354f85-35fd-47f3-8951-ded2c924607b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Territory\states">
+      <UniqueIdentifier>{89113d36-072a-43bb-9377-ebdea7250c20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Territory\objects">
+      <UniqueIdentifier>{d1630612-b4da-4f8f-971e-7c448b1e6702}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,44 +180,80 @@
     <ClCompile Include="Labyrinth\Labyrinth_config.cpp">
       <Filter>Исходные файлы\Labyrinth</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\config\config.cpp">
+    <ClCompile Include="aerohockey\config\Aerohockey_config.cpp">
       <Filter>Исходные файлы\Aerohockey\config</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\board.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_board.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\paddle.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_paddle.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\player.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_player.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\puck.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_puck.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\ready_button.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_ready_button.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\objects\world.cpp">
+    <ClCompile Include="aerohockey\objects\Aerohockey_world.cpp">
       <Filter>Исходные файлы\Aerohockey\objects</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\states\manager.cpp">
+    <ClCompile Include="aerohockey\states\Aerohockey_game.cpp">
       <Filter>Исходные файлы\Aerohockey\states</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\states\game.cpp">
+    <ClCompile Include="aerohockey\states\Aerohockey_manager.cpp">
       <Filter>Исходные файлы\Aerohockey\states</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\states\preparation.cpp">
+    <ClCompile Include="aerohockey\states\Aerohockey_preparation.cpp">
       <Filter>Исходные файлы\Aerohockey\states</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\states\result.cpp">
+    <ClCompile Include="aerohockey\states\Aerohockey_result.cpp">
       <Filter>Исходные файлы\Aerohockey\states</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\util.cpp">
+    <ClCompile Include="aerohockey\Aerohockey_starter.cpp">
       <Filter>Исходные файлы\Aerohockey</Filter>
     </ClCompile>
-    <ClCompile Include="aerohockey\starter.cpp">
-      <Filter>Исходные файлы\Aerohockey</Filter>
+    <ClCompile Include="territory\config\Territory_config.cpp">
+      <Filter>Исходные файлы\Territory\config</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_board.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_map.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_paddle.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_player.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_ready_button.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\objects\Territory_world.cpp">
+      <Filter>Исходные файлы\Territory\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\states\Territory_game.cpp">
+      <Filter>Исходные файлы\Territory\states</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\states\Territory_manager.cpp">
+      <Filter>Исходные файлы\Territory\states</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\states\Territory_preparation.cpp">
+      <Filter>Исходные файлы\Territory\states</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\states\Territory_result.cpp">
+      <Filter>Исходные файлы\Territory\states</Filter>
+    </ClCompile>
+    <ClCompile Include="territory\Territory_starter.cpp">
+      <Filter>Исходные файлы\Territory</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,38 +359,68 @@
     <ClInclude Include="Labyrinth\Labyrinth_config.h">
       <Filter>Файлы заголовков\Labyrinth</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\config\config.hpp">
+    <ClInclude Include="aerohockey\config\Aerohockey_config.hpp">
       <Filter>Файлы заголовков\Aerohockey\config</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\board.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_board.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\paddle.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_paddle.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\player.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_player.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\puck.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_puck.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\ready_button.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_ready_button.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\objects\world.hpp">
+    <ClInclude Include="aerohockey\objects\Aerohockey_world.hpp">
       <Filter>Файлы заголовков\Aerohockey\objects</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\states\manager.hpp">
+    <ClInclude Include="aerohockey\states\Aerohockey_manager.hpp">
       <Filter>Файлы заголовков\Aerohockey\states</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\states\state.hpp">
+    <ClInclude Include="aerohockey\states\Aerohockey_state.hpp">
       <Filter>Файлы заголовков\Aerohockey\states</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\util.hpp">
+    <ClInclude Include="aerohockey\Aerohockey_starter.h">
       <Filter>Файлы заголовков\Aerohockey</Filter>
     </ClInclude>
-    <ClInclude Include="aerohockey\starter.h">
-      <Filter>Файлы заголовков\Aerohockey</Filter>
+    <ClInclude Include="territory\config\Territory_config.hpp">
+      <Filter>Файлы заголовков\Territory\config</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_board.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_map.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_paddle.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_player.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_ready_button.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\objects\Territory_world.hpp">
+      <Filter>Файлы заголовков\Territory\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\states\Territory_manager.hpp">
+      <Filter>Файлы заголовков\Territory\states</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\states\Territory_state.hpp">
+      <Filter>Файлы заголовков\Territory\states</Filter>
+    </ClInclude>
+    <ClInclude Include="territory\Territory_starter.h">
+      <Filter>Файлы заголовков\Territory</Filter>
+    </ClInclude>
+    <ClInclude Include="util.hpp">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
