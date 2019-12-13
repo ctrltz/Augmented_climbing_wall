@@ -90,7 +90,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\aleks\Desktop\kolya\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\include;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_DYNAMIC;_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;NOMINMAX</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\aleks\Desktop\kolya\SFML-2.5.1-windows-vc15-64-bit\SFML-2.5.1\lib;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kinect20.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
